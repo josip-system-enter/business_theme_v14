@@ -1,4 +1,23 @@
+
+/* Finalna plava tema za ERPNext */
 /* Works on Chrome, Edge, and Safari */
+
+:root {
+    --background-color: #004080;
+    --primary-color: #003366;
+    --secondary-color: #7574ff;
+    --white-color: #ffffff;
+    --black-color: #000000;
+    --gray-color: #888888;
+
+    --hover-color: rgba(0, 51, 102, 0.15);
+    --input-focus-bg: rgba(0, 51, 102, 0.14);
+    --primary-hover: rgba(0, 51, 102, 0.93);
+
+    --page-head-height: 50px;
+    --navbar-height: 50px;
+}
+
 *::-webkit-scrollbar {
     width: 6px;
 }
@@ -13,10 +32,10 @@
     scrollbar-width: thin;
     scrollbar-color: var(--scroll-color) var(--scroll-bg);
 }
-.awesomplete .input-with-feedback {
-    border: 1px solid var(--border-color);
-}
-.form-control {
+.awesomplete .input-with-feedback,
+.form-control,
+.comment-box .comment-input-container .ql-editor,
+.duration-picker .duration-input {
     border: 1px solid var(--border-color);
 }
 .search-bar .awesomplete input {
@@ -25,19 +44,13 @@
 .modal-backdrop {
     background-color: #2c436b !important;
 }
-.widget .widget-head .widget-title {
-    font-size: var(--text-base);
-}
-.comment-box .comment-input-header, .form-dashboard-section .section-head, .form-section .section-head, .head-title {
+.widget .widget-head .widget-title,
+.comment-box .comment-input-header,
+.form-dashboard-section .section-head,
+.form-section .section-head,
+.head-title {
     font-size: var(--text-base);
     font-weight: 600;
-}
-.comment-box .comment-input-container .ql-editor {
-    border: 1px solid var(--border-color);
-}
-.duration-picker .duration-input {
-    background-color: var(--bg-color);
-    border: 1px solid var(--border-color);
 }
 .control-label {
     font-weight: 500;
@@ -51,7 +64,6 @@
     --scroll-bg: #161a1f;
     --scroll-color: #1c2126;
 }
-
 [data-theme="light"] {
     --bg-color: #f2f5fa;
     --text-bold: 600;
@@ -68,86 +80,42 @@
     --scroll-color: #d9dfe6;
 }
 
-/*****  OVERRIDDEN CSS  *****/
-
-/* Global CSS */
-
-/* Colours */
-:root {
-    --background-color: #004080;    /* was #36414c */
-    --primary-color: #003366;       /* was #ffa00a */
-    --secondary-color: #7574ff;
-    --white-color: #ffffff;
-    --black-color: #000000;
-    --gray-color: #888888;
-
-    --page-head-height: 50px;
-    --navbar-height: 50px;
-}
-
-.btn-primary:active,
-.btn-secondary:focus,
-.btn-secondary:active,
-.btn-secondary:focus {
-    box-shadow: none !important;
-}
+/* Glavni elementi */
 .btn-primary {
     color: #fff !important;
     background-color: var(--primary-color) !important;
     border-radius: 0 !important;
 }
 .btn-primary:hover {
-    background-color: rgba(0, 51, 102, 0.93) !important;
+    background-color: var(--primary-hover) !important;
 }
-
+.btn-primary:active,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary:focus {
+    box-shadow: none !important;
+}
 .page-head,
 .page-head .page-head-content {
     height: var(--page-head-height);
     top: var(--page-head-height);
 }
 
-/* Top Header */
-.navbar {
+/* Navigacija */
+.navbar,
+.navbar-expand {
     background: var(--background-color) !important;
     height: var(--navbar-height);
 }
-.navbar-expand {
-    background-color: var(--background-color);
-}
-#navbar-breadcrumbs > li > a::before {
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: inherit;
-    -webkit-font-smoothing: antialiased;
-    margin-right: .3em;
-    display: inline-block;
-    font-size: 24px;
-    transition: 0.2s;
-    position: relative;
-    top: 3px;
-    content: "\f105";
-    margin-right: 10px;
-    color: var(--white-color);
-}
-#navbar-breadcrumbs a {
-    color: var(--white-color);
-    text-decoration: none;
-}
+#navbar-breadcrumbs > li > a::before,
+#navbar-breadcrumbs a,
+.navbar .navbar-nav a.nav-link,
 header .form-control {
     color: var(--white-color);
 }
 header .form-control:focus {
-    border: 0;
-}
-.search-bar .awesomplete input {
-    height: 32px;
-}
-header ul#navbar-breadcrumbs {
-    margin-top: -8px;
-}
-header .form-control:focus {
     background-color: var(--white-color) !important;
+    border: 0;
 }
 
 /* Sidebar */
@@ -168,7 +136,7 @@ header .form-control:focus {
     box-shadow: none !important;
 }
 
-/* Input Fields */
+/* Input */
 input {
     border-radius: 0 !important;
 }
@@ -180,22 +148,16 @@ input {
     outline: 0;
     border: 1px solid var(--primary-color);
     box-shadow: none;
-    background: rgba(0, 51, 102, 0.14) !important;
-}
-.navbar .navbar-nav a.nav-link {
-    color: var(--white-color);
-}
-span.notifications-seen use,
-symbol#icon-small-down {
-    fill: var(--white-color);
+    background: var(--input-focus-bg) !important;
 }
 
-/* Table */
+/* Tabele */
 .form-grid {
     border-radius: 0;
     border: 1px solid #bbbbbb;
 }
-.form-grid .grid-heading-row {
+.form-grid .grid-heading-row,
+.datatable .dt-header .dt-cell--header .dt-cell__content {
     background-color: #f4f4f4;
 }
 .grid-heading-row {
@@ -205,24 +167,20 @@ symbol#icon-small-down {
     border-right: 1px solid #d1d8dd;
 }
 .form-grid .grid-row:hover {
-    background: rgba(0, 51, 102, 0.15);
+    background: var(--hover-color);
 }
 
-/* Heading Color */
-.head-title, .form-section .section-head, .form-dashboard-section .section-head, .comment-box .comment-input-header {
+/* Naslovi i liste */
+.head-title,
+.form-section .section-head,
+.form-dashboard-section .section-head,
+.comment-box .comment-input-header {
     color: var(--primary-color);
 }
-
-/* Lists */
 .list-subject a {
     text-decoration: none;
     transition: 0.3s;
 }
 .list-subject a:hover {
     color: var(--secondary-color);
-}
-
-/* Report Table */
-.datatable .dt-header .dt-cell--header .dt-cell__content {
-    background-color: #f4f4f4;
 }
